@@ -1,0 +1,42 @@
+services:
+  slib-rms-analytics-dbt:
+    build:
+      context: slib-rms-analytics-dbt/.
+    image: dbt-flask:latest
+    container_name: dbt-flask
+    ports:
+      - 8000:8000
+    user: xld
+    environment:
+      - DBT_PROJECT_DIR=/usr/app
+      - DBT_PROFILES_DIR=/usr/app
+    depends_on:
+      - postgres
+  slib-rms-analytics-batch:
+    build:
+      context: slib-rms-analytics-spring-batch/.
+    image: spring-batch:latest
+    container_name: spring-batch
+    ports:
+      - 8080:8080
+    volumes:
+      - ./slib-rms-analytics-dbt/dbt-project:/home/data/slib-rms-analytics-batch/conf:ro
+    user: xld
+    environment:
+      - JAVA_OPTIONS="-Xms512m -Xmx2048m"
+    depends_on:
+      - slib-rms-analytics-dbt
+  postgres:
+    image: postgres:18-alpine
+    container_name: dbt_db
+    volumes:
+      - db-data:/var/lib/postgresql
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=devoteam
+      - POSTGRES_DB=rms_local_analytics
+volumes:
+  db-data:
