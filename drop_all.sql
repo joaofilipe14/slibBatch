@@ -1,0 +1,12 @@
+DROP TABLE IF EXISTS raw.connector_param;
+DROP TABLE IF EXISTS raw.currency_ref;
+DROP TABLE IF EXISTS raw.ds_account_to_risk;
+DROP TABLE IF EXISTS raw.ds_algo_external_results;
+DROP TABLE IF EXISTS raw.ds_client_entity;
+DROP TABLE IF EXISTS raw.ds_exposition_vacation;
+DROP TABLE IF EXISTS raw.ds_portfolio;
+DROP TABLE IF EXISTS raw.ds_portfolio_to_risk;
+DROP TABLE IF EXISTS raw.ds_risk_unit;
+DROP TABLE IF EXISTS raw.ds_super_client;
+DROP TABLE IF EXISTS raw.kpi_config;
+DROP SCHEMA IF EXISTS raw;
