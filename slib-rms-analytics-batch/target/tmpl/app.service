@@ -1,0 +1,12 @@
+[Unit]
+Description=<<app-tile-app-id>>-app
+
+[Service]
+User=xld_{{shared.env.code}}
+Type=simple
+RemainAfterExit=yes
+ExecStart=/home/data{{shared.env.code}}/<<app-tile-app-id>>/setup.bash start
+ExecStop=/home/data{{shared.env.code}}/<<app-tile-app-id>>/setup.bash stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1 @@
+cmd.exe /X /C "D:\jdk-17\bin\javac @D:/slib-rms-analytics/slib-rms-analytics-batch/target/classes/org.codehaus.plexus.compiler.javac.JavacCompiler15772185786735903669arguments"

@@ -1,0 +1,29 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+	<id>appxld</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<fileSets>
+		<fileSet>
+			<directory>target/generated-resources</directory>
+			<excludes>
+				<exclude>*-archive.xml</exclude>
+				<exclude>*.bash</exclude>
+				<exclude>*.jks</exclude>
+				<exclude>app.service</exclude>
+				<exclude>docker-config</exclude>
+			</excludes>
+			<outputDirectory>docker-config/{{app-tile-app-id}}</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>target</directory>
+			<includes>
+				<include>docker-compose-service.yml</include>
+			</includes>
+			<outputDirectory>docker-config/{{app-tile-app-id}}</outputDirectory>
+		</fileSet>
+	</fileSets>
+	<includeBaseDirectory>false</includeBaseDirectory>
+</assembly>

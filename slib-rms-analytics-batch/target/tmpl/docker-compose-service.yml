@@ -1,0 +1,15 @@
+  {{app-tile-app-id}}:
+    image: "<<slib.docker.private.registry.url>>/<<project.groupId>>/<<project.artifactId>>:<<project.version>>"
+    container_name: "<<app-tile-app-id>>-{{shared.env.code}}"
+    environment:
+      - TZ=${TZ}
+      - _JAVA_OPTIONS={{<<app-tile-ph-prefix>>.java.options}}
+    ports:
+      - "{{<<app-tile-ph-prefix>>.http.port}}:8080"
+    volumes:
+      - "/home/data{{shared.env.code}}/var/log/<<app-tile-app-id>>:/home/data/var/log:rw"
+      - "/home/data{{shared.env.code}}/{{xld-tile-app-id}}/docker-config/<<app-tile-app-id>>:/home/data/app/conf:ro"
+      - "{{app-tile-ssl-ph-trick}}}}:/home/data/app/ssl:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    restart: always
+    user: ${CURRENT_UID}

@@ -1,0 +1,114 @@
+package com.slib.rms.analytics;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/batch")
+public class ManualJobController {
+    private static final Logger log = LoggerFactory.getLogger(ManualJobController.class);
+    private final JobLauncher jobLauncher;
+    private final Job dailyDatabaseJob;
+    private final Job dailyJSONJob;
+    private final Job dailyJobDBTBronze;
+    private final Job dailyJobDBTSilver;
+    private final Job dailyJobDBTGold;
+
+    public ManualJobController(JobLauncher jobLauncher,
+                               @Qualifier("dailyDatabaseJob") Job dailyDatabaseJob,
+                               @Qualifier("dailyJSONJob") Job dailyJSONJob,
+                               @Qualifier("dailyJobDBTBronze") Job dailyJobDBTBronze,
+                               @Qualifier("dailyJobDBTSilver") Job dailyJobDBTSilver,
+                               @Qualifier("dailyJobDBTGold") Job dailyJobDBTGold) {
+        this.jobLauncher = jobLauncher;
+        this.dailyDatabaseJob = dailyDatabaseJob;
+        this.dailyJSONJob = dailyJSONJob;
+        this.dailyJobDBTBronze = dailyJobDBTBronze;
+        this.dailyJobDBTSilver = dailyJobDBTSilver;
+        this.dailyJobDBTGold = dailyJobDBTGold;
+    }
+
+    /**
+     * Endpoint to manually launch the shell script job.
+     * This is the manual override the client can use.
+     */
+    @PostMapping("/runJobDatabase")
+    public ResponseEntity<String> runJobManually() {
+        JobParameters params = new JobParametersBuilder()
+                .addString("ManualTriggerTime", String.valueOf(System.currentTimeMillis()))
+                .addString("Source", "Manual_Client_Override").toJobParameters();
+        try {
+            jobLauncher.run(dailyDatabaseJob, params);
+            return ResponseEntity.ok("Job launched successfully!");
+        } catch (Exception e) {
+            return getStringResponseEntity(e);
+        }
+    }
+
+    @PostMapping("/runJobJSON")
+    public ResponseEntity<String> runJobManuallyJSON() {
+        JobParameters params = new JobParametersBuilder()
+                .addString("ManualTriggerTime", String.valueOf(System.currentTimeMillis()))
+                .addString("Source", "Manual_Client_Override").toJobParameters();
+        try {
+            jobLauncher.run(dailyJSONJob, params);
+            return ResponseEntity.ok("Job launched successfully!");
+        } catch (Exception e) {
+            return getStringResponseEntity(e);
+        }
+    }
+
+    @PostMapping("/runJobDBTBronze")
+    public ResponseEntity<String> runJobDBTBronze() {
+        JobParameters params = new JobParametersBuilder()
+                .addString("ManualTriggerTime", String.valueOf(System.currentTimeMillis()))
+                .addString("Source", "Manual_Client_Override").toJobParameters();
+        try {
+            jobLauncher.run(dailyJobDBTBronze, params);
+            return ResponseEntity.ok("Job launched successfully!");
+        } catch (Exception e) {
+            return getStringResponseEntity(e);
+        }
+    }
+
+    @PostMapping("/runJobDBTSilver")
+    public ResponseEntity<String> runJobDBTSilver() {
+        JobParameters params = new JobParametersBuilder()
+                .addString("ManualTriggerTime", String.valueOf(System.currentTimeMillis()))
+                .addString("Source", "Manual_Client_Override").toJobParameters();
+        try {
+            jobLauncher.run(dailyJobDBTSilver, params);
+            return ResponseEntity.ok("Job launched successfully!");
+        } catch (Exception e) {
+            return getStringResponseEntity(e);
+        }
+    }
+
+    @PostMapping("/runJobDBTGold")
+    public ResponseEntity<String> runJobDBTGold() {
+        JobParameters params = new JobParametersBuilder()
+                .addString("ManualTriggerTime", String.valueOf(System.currentTimeMillis()))
+                .addString("Source", "Manual_Client_Override").toJobParameters();
+        try {
+            jobLauncher.run(dailyJobDBTGold, params);
+            return ResponseEntity.ok("Job launched successfully!");
+        } catch (Exception e) {
+            return getStringResponseEntity(e);
+        }
+    }
+
+
+    private static ResponseEntity<String> getStringResponseEntity(Exception e) {
+        log.error("Failed to launch job manually: {}", e.getMessage());
+        return ResponseEntity.internalServerError().body("Failed to launch job: " + e.getMessage());
+    }
+}

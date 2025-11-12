@@ -1,0 +1,12 @@
+[Unit]
+Description=slib-rms-analytics-batch-app
+
+[Service]
+User=xld_{{shared.env.code}}
+Type=simple
+RemainAfterExit=yes
+ExecStart=/home/data{{shared.env.code}}/slib-rms-analytics-batch/setup.bash start
+ExecStop=/home/data{{shared.env.code}}/slib-rms-analytics-batch/setup.bash stop
+
+[Install]
+WantedBy=multi-user.target

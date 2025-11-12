@@ -1,0 +1,15 @@
+  {{app-tile-app-id}}:
+    image: "xdslibuild1.slib.com:8500/com.slib.rms/slib-rms-analytics-batch:1.0.0-12-SNAPSHOT"
+    container_name: "slib-rms-analytics-batch-{{shared.env.code}}"
+    environment:
+      - TZ=${TZ}
+      - _JAVA_OPTIONS={{spr.java.options}}
+    ports:
+      - "{{spr.http.port}}:8080"
+    volumes:
+      - "/home/data{{shared.env.code}}/var/log/slib-rms-analytics-batch:/home/data/var/log:rw"
+      - "/home/data{{shared.env.code}}/{{xld-tile-app-id}}/docker-config/slib-rms-analytics-batch:/home/data/app/conf:ro"
+      - "{{app-tile-ssl-ph-trick}}}}:/home/data/app/ssl:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+    restart: always
+    user: ${CURRENT_UID}
