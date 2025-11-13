@@ -1,0 +1,56 @@
+CONN_FLUX2_SV,,Portfolio Connector,f,,Portfolio Connector,f,0,,FLOW2,479,OUTPUT,,,
+CONN_FLUX3_SV,19:00:00,Computed Risk Connector,f,,Computed Risk Connector,f,3600,900,DAILYVAR,479,INPUT,,,
+CONN_RISK_SYSTEM_ALERTS,,Connecteur Alertes Risk et System,f,,Connecteur Alertes Risk et System,f,0,,RS_ALERTS,479,OUTPUT,,,
+CONN_DETAILED_RISK_CALCULATION_REPORTING,,Connecteur Detailed Risk Calculation Reporting,f,,Connecteur Detailed Risk Calculation Reporting,f,0,,DRCR,479,OUTPUT,,,
+SEND_RTC_ANSWER,23:00:00,Send Rtc Answer Connector,f,23:55:00,Send Rtc Answer Connector,f,3600,3600,INTERNAL,38,INPUT,,,
+CTRL_PORTFOLIO,,Controleur Portfolio,f,,Controleur Portfolio,f,0,,INTERNAL,480,INPUT,,,
+SYSTEM,,Moniteur Systeme,f,,Moniteur Systeme,f,0,,INTERNAL,480,INPUT,,,
+SEND_ALERT_MAIL,,Alertes Mails,f,,Alertes Mails,f,0,,INTERNAL,479,INPUT,,,
+CONN_BTF_CASH_RU,23:00:00,Connecteur BTF cash risk unit,f,,Connecteur BTF cash risk unit,f,3600,3600,INTERNAL,479,INPUT,,,
+CONN_BTF_TITRE_RU,23:00:00,Connecteur BTF titre risk unit,f,,Connecteur BTF titre risk unit,f,3600,3600,INTERNAL,480,INPUT,,,
+CONN_BTF_CASH,23:00:00,Connecteur BTF cash,f,,Connecteur BTF cash,t,3600,4800,INTERNAL,1069,INPUT,,,
+CTRL_OBLIGATIONS,,Controleur Obligations,f,,Controleur Obligations,f,0,,INTERNAL,480,INPUT,,,
+PTF_SIM,23:00:00,PTF_SIM,f,23:00:00,PTF SIMULATION,t,3600,,OEX,1,INPUT,,,
+FLUX4,,Flux4 Connector,f,,Flux4 Connector,f,0,,FLOW4,1,OUTPUT,,,
+FLUX5,,Flux5 Connector,f,,Flux5 Connector,f,0,,FLOW5,1,INPUT,,,
+FLUX6,,Flux6 Connector,f,,Flux6 Connector,f,0,,FLOW6,1,OUTPUT,,,
+CCM,,Ccm Connector,f,,Ccm Connector,f,0,,FLOW6,1,OUTPUT,,,
+MCN,,Margin Call Notice Connector,f,,Margin Call Notice Connector,f,0,,FLOW6,1,OUTPUT,,,
+IND,23:00:00,IND,f,08:30:00,IND,t,3600,,EXTERNAL,1,INPUT,,,IND
+FIXED_COLLATERAL,20:00:00,Connector Fixed Collateral,f,20:30:00,Connector Fixed Collateral,t,0,,COLLATERAL,1,INPUT,,,
+SEND_MARGINING_MESSAGE_MAIL,,McnEmailMessage Connector,f,,McnEmailMessage Connector,f,0,,INTERNAL,1,OUTPUT,,,
+CONN_MARGINING_MESSAGE,,MarginingMessage Connector,f,,MarginingMessage Connector,f,0,,INTERNAL,1,OUTPUT,,,
+CITI_OVERDRAFT_COLLATERAL,20:00:00,Manual Entry Cash & Securities Collateral,f,20:00:00,Manual Entry Cash & Securities Collateral,t,0,,OTC,1,INPUT,,,
+CASH_BALANCE,20:00:00,Connector Cash Balance,f,20:30:00,Connector Cash Balance,t,0,,COLLATERAL,1,INPUT,,,
+FLUX7,,Flux7 Connector,f,,Flux7 Connector,f,0,,FLOW7,1,INPUT,,,
+SIMULATED_FLUX4,,Simulated Flux4 Connector,f,,Simulated Flux4 Connector,f,0,,FLOW4,1,OUTPUT,,,
+ITD_AUTOMATIC_CALCULATION,,ITD Automatic Calculation,f,,ITD Automatic Calculation,f,0,,INTERNAL,1,INPUT,,,
+ERM,23:00:00,E_ERM for Parameters,f,08:30:00,E_ERM for Parameters,t,3600,,EXTERNAL,1,INPUT,,,
+EURONEXT,20:00:00,A_Euronext Clearing Cash Positions,f,20:00:00,A_Euronext Clearing Cash Positions,t,0,,OEX,52,INPUT,,EURONEXT,EURONEXT
+EXT_FIRE,20:00:00,E_CCG Fixed Income,f,06:00:00,E_CCG Fixed Income,t,3600,,EXTERNAL,1,INPUT,,EURONEXT,EXT_FIRE
+EXT_KELER,23:00:00,E_Keler_CCP,f,08:30:00,E_Keler_CCP,t,0,,EXTERNAL,1,INPUT,,KELER,EXT_KELER
+EXT_KDPW,23:00:00,E_KDPW_CCP,f,08:30:00,E_KDPW_CCP,t,0,,EXTERNAL,1,INPUT,,KDPW,EXT_KDPW
+EXT_EURONEXT,20:00:00,E_Euronext Clearing,f,20:00:00,E_Euronext Clearing,t,3600,,EXTERNAL,1,INPUT,,EURONEXT,EXT_EURONEXT
+EUROCCP,23:00:00,E_Cboe Clear Europe,f,08:30:00,E_Cboe Clear Europe,t,3600,,EXTERNAL,1,INPUT,,CBOE,EUROCCP
+EUROCCP_INTEROP,23:00:00,E_Cboe Clear Europe IF,f,08:30:00,E_Cboe Clear Europe IF,t,3600,,EXTERNAL,1,INPUT,,CBOE,EUROCCP_INTEROP
+EXT_BME,23:00:00,E_BME Clearing,f,08:30:00,E_BME Clearing,t,3600,,EXTERNAL,1,INPUT,,BME,EXT_BME
+EXT_LCHLTD,23:00:00,E_LCH EquityClear Ltd,f,08:30:00,E_LCH EquityClear Ltd,t,3600,,EXTERNAL,1,INPUT,,LCHLTD,EXT_LCHLTD
+EXT_ECAG,23:00:00,E_Eurex Clearing AG,f,08:30:00,E_Eurex Clearing AG,t,3600,,EXTERNAL,1,INPUT,,EUREX,EXT_ECAG
+BME_ALGO_STATUS,23:00:00,A_BME Clearing Status for Parameters,f,08:30:00,A_BME Clearing Status for Parameters,t,3600,0,ALGORITHM_STATUS,1,INPUT,,BME,BME
+EXT_XCLEAR,23:00:00,E_X-Clear,f,08:30:00,E_X-Clear,t,3600,,EXTERNAL,1,INPUT,,XCLEAR,EXT_XCLEAR
+EXT_SIX_XCLEAR,23:00:00,E_SIX X-Clear,f,08:30:00,E_SIX X-Clear,t,0,,EXTERNAL,1,INPUT,,SIX X-CLEAR,EXT_SIX_XCLEAR
+EXT_SIX_XCLEAR_LME,08:30:00,E_SIX X-Clear LME,f,08:30:00,E_SIX X-Clear LME,t,0,,EXTERNAL,1,INPUT,,SIX X-CLEAR,EXT_SIX_XCLEAR_LME
+EXT_LCH_REPOCLEAR_SA,08:30:00,E_LCH RepoClear SA,f,08:30:00,E_LCH RepoClear SA,t,0,,EXTERNAL,1,INPUT,,LCHS_REPOCLEAR_SA,EXT_LCH_REPOCLEAR_SA
+EURONEXT_ALGO_STATUS,,A_Euronext Clearing Status for Parameters,f,12:35:00,A_Euronext Clearing Status for Parameters,f,0,,ALGORITHM_STATUS,0,INPUT,,EURONEXT,EURONEXT
+LCHLTD_CMF,20:00:00,A_LCH EquityClear Ltd (CMF) for Positions,f,20:00:00,A_LCH EquityClear Ltd (CMF) for Positions,t,0,,OEX,1,INPUT,,LCHLTD,EMC
+IRISK,23:00:00,E_IRISK,f,08:30:00,E_IRISK,t,3600,,EXTERNAL,1,INPUT,,IRISK,IRISK
+CCG,20:00:00,E_CC&G for Positions,f,20:00:00,E_CC&G for Positions,t,0,,OEX,21,INPUT,,CCG,CCG
+ECAG,20:00:00,A_Eurex Clearing AG for Positions,f,20:00:00,A_Eurex Clearing AG for Positions,t,0,0,OEX,38,INPUT,,EUREX,ECCP
+LCHLTD,23:00:00,A_LCH EquityClear Ltd for Positions,f,23:00:00,A_LCH EquityClear Ltd for Positions,t,0,,OEX,39,INPUT,,LCHLTD,EMC
+BME,23:00:00,A_BME Clearing for Positions,f,23:00:00,A_BME Clearing for Positions,t,0,0,OEX,27,INPUT,,BME,BME
+IRIS,23:00:00,E_IRIS,f,08:30:00,E_IRIS,t,3600,,EXTERNAL,1,INPUT,,IRIS,IRIS
+DMA,23:00:00,E_DMA,f,08:30:00,E_DMA,t,3600,,EXTERNAL,1,INPUT,,DMA,DMA
+EMC,,A_LCH EquityClear Ltd Status for Parameters,f,00:00:00,A_LCH EquityClear Ltd Status for Parameters,f,0,,ALGORITHM_STATUS,2,INPUT,,LCHLTD,EMC
+EURONEXT_DERIVATIVE_POSITIONS,20:00:00,A_Euronext Clearing Derivatives for Positions,f,20:00:00,A_Euronext Clearing Derivatives for Positions,t,0,,OEX,1,INPUT,,EURONEXT,EURONEXT
+EUREX,22:00:00,A_EUREX for Positions,f,07:00:00,A_EUREX for Positions,t,3600,0,OEX,1,INPUT,,EUREX,EUREX
+EUREX_ALGO_STATUS,23:00:00,A_EUREX Status for Parameters,f,08:00:00,A_EUREX Status for Parameters,t,3600,0,ALGORITHM_STATUS,1,INPUT,,EUREX,EUREX
