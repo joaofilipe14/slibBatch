@@ -32,6 +32,8 @@ BEGIN
 END
 $$;
 
+SET filter.delete_date = :'delete_date_var';
+
 -- Delete
 DO $$
 DECLARE
@@ -49,9 +51,9 @@ DECLARE
         'slv_fct_portfolio_alert_events'
     ];
 	current_table TEXT;
-    delete_date DATE := '2020-01-01'::DATE;
+    delete_date DATE := current_setting('filter.delete_date')::DATE;
 BEGIN
-    RAISE NOTICE 'Starting delete procedure for %', schema;
+    RAISE NOTICE 'Starting delete procedure for % schema: Will delete all records older than %', schema, delete_date;
     FOREACH current_table IN ARRAY table_list
     LOOP
         IF EXISTS (
