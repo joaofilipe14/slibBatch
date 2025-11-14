@@ -1,4 +1,4 @@
-### 🛠️ Prerequistes
+### 🛠️ Prerequisites
 
 - Have [psql cli tool](https://www.postgresql.org/docs/current/app-psql.html) installed
 
